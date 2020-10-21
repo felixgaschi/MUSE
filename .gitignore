@@ -2,6 +2,8 @@
 
 data/crosslingual/
 data/monolingual/
+bin/crosslingual/
+bin/monolingual/
 dumped/
 
 # Created by https://www.gitignore.io/api/vim,python
