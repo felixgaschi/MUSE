@@ -44,7 +44,7 @@ except ImportError:
     FAISS_AVAILABLE = False
 
 
-def initialize_exp(params):
+def initialize_exp(params, logger=None):
     """
     Initialize experiment.
     """
@@ -61,7 +61,8 @@ def initialize_exp(params):
         pickle.dump(params, f)
 
     # create logger
-    logger = create_logger(os.path.join(params.exp_path, 'train.log'), vb=params.verbose)
+    if logger is None:
+        logger = create_logger(os.path.join(params.exp_path, 'train.log'), vb=params.verbose)
     logger.info('============ Initialized logger ============')
     logger.info('\n'.join('%s: %s' % (k, str(v)) for k, v in sorted(dict(vars(params)).items())))
     logger.info('The experiment will be stored in %s' % params.exp_path)
